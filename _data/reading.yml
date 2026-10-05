@@ -1,0 +1,26 @@
+# status: reading | finished | queue
+# rating (optional): 1–5   finished (optional): YYYY-MM-DD
+# url and note are optional.
+
+- title: Designing Data-Intensive Applications
+  author: Martin Kleppmann
+  status: reading
+  url: https://dataintensive.net/
+
+- title: The Pragmatic Programmer
+  author: David Thomas & Andrew Hunt
+  status: finished
+  finished: 2026-08-14
+  rating: 5
+  note: Still the best general-purpose book on the craft. The tracer bullets chapter alone is worth it.
+
+- title: A Philosophy of Software Design
+  author: John Ousterhout
+  status: finished
+  finished: 2026-06-02
+  rating: 4
+  note: Deep modules, shallow interfaces. Short and opinionated in a good way.
+
+- title: Structure and Interpretation of Computer Programs
+  author: Harold Abelson & Gerald Jay Sussman
+  status: queue

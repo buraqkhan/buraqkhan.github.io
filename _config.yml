@@ -1,0 +1,72 @@
+# ---------------------------------------------------------------
+# Site settings — edit these first.
+# ---------------------------------------------------------------
+title: Buraq Khan
+author: Buraq Khan
+tagline: Software engineer. Writing about code, systems, and books.
+description: >-
+  Personal site of Buraq Khan — blog, reading list, and notes.
+email: buraqkhan18@gmail.com
+# Profile photo shown in the header and on the home page.
+# Drop your photo in assets/img/ and point this at it (square, ≥ 256px works best).
+avatar: /assets/img/avatar.svg
+github_username: ""        # e.g. buraqkhan — shown in footer if set
+linkedin_username: ""      # optional
+twitter_username: ""       # optional
+
+# url is your GitHub Pages origin. baseurl is set automatically by the
+# deploy workflow, so leave it empty here.
+url: ""                    # e.g. https://buraqkhan.github.io
+baseurl: ""
+
+# Top-level navigation (order matters)
+nav:
+  - title: Blog
+    url: /blog/
+  - title: Reading
+    url: /reading/
+  - title: Notes
+    url: /notes/
+
+# ---------------------------------------------------------------
+# Build settings
+# ---------------------------------------------------------------
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter_opts:
+    disable: false
+
+permalink: /blog/:year/:month/:title/
+timezone: UTC
+
+collections:
+  notes:
+    output: true
+    permalink: /notes/:title/
+
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+  - scope: { path: "", type: notes }
+    values: { layout: note }
+  - scope: { path: "" }
+    values: { layout: page }
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+feed:
+  path: feed.xml
+
+exclude:
+  - README.md
+  - DOCS.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .bundle
+  - .jekyll-cache

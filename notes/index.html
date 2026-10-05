@@ -1,0 +1,25 @@
+---
+layout: list
+title: Notes
+subtitle: Short, evolving notes — snippets, ideas, and things worth remembering.
+---
+{%- assign notes = site.notes | sort: "date" | reverse -%}
+{%- assign topics = notes | map: "topic" | compact | uniq | sort -%}
+{%- if topics.size > 0 %}
+<div class="filters" role="group" aria-label="Filter notes by topic">
+  <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+  {%- for t in topics %}
+  <button type="button" class="chip" data-filter="{{ t | slugify }}" aria-pressed="false">{{ t }}</button>
+  {%- endfor %}
+</div>
+{%- endif %}
+<ul class="entry-list notes-list">
+  {%- for note in notes %}
+  <li data-topic="{{ note.topic | slugify }}">
+    <a href="{{ note.url | relative_url }}">{{ note.title }}</a>
+    <span class="muted small">{{ note.topic }}</span>
+  </li>
+  {%- else %}
+  <li class="muted">Nothing here yet.</li>
+  {%- endfor %}
+</ul>

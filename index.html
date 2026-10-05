@@ -1,0 +1,54 @@
+---
+layout: default
+title: Home
+---
+<section class="intro">
+  <div class="intro-head">
+    {%- if site.avatar %}
+    <img class="avatar avatar-lg" src="{{ site.avatar | relative_url }}" alt="Photo of {{ site.author }}" width="104" height="104">
+    {%- endif %}
+    <div>
+      <h1>Hi, I'm <em>{{ site.author | split: " " | first }}</em>.</h1>
+      <p class="lede">{{ site.tagline }}</p>
+    </div>
+  </div>
+  <div class="prose">
+    <p>
+      I build software and write about what I learn along the way. This site is
+      where I keep longer-form <a href="{{ '/blog/' | relative_url }}">essays</a>,
+      a log of what I'm <a href="{{ '/reading/' | relative_url }}">reading</a>,
+      and shorter <a href="{{ '/notes/' | relative_url }}">notes</a> I want to remember.
+    </p>
+  </div>
+</section>
+
+{%- if site.data.projects.size > 0 %}
+<section class="home-section">
+  <h2 class="section-label">Projects</h2>
+  <ul class="project-list">
+    {%- for p in site.data.projects %}
+    <li>
+      <a href="{{ p.url }}">{{ p.name }}</a>
+      <p>{{ p.description }}</p>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif %}
+
+<section class="home-section">
+  <h2 class="section-label">Recent writing <a class="more" href="{{ '/blog/' | relative_url }}">All posts →</a></h2>
+  {% include post-list.html items=site.posts limit=5 %}
+</section>
+
+{%- assign reading_now = site.data.reading | where: "status", "reading" %}
+{%- if reading_now.size > 0 %}
+<section class="home-section">
+  <h2 class="section-label">Currently reading <a class="more" href="{{ '/reading/' | relative_url }}">Reading list →</a></h2>
+  <ul class="entry-list">
+    {%- for b in reading_now %}
+    <li><span><span class="entry-title">{{ b.title }}</span> <span class="muted">— {{ b.author }}</span></span></li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif %}

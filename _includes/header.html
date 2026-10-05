@@ -1,0 +1,18 @@
+<header class="site-header">
+  <a class="site-title" href="{{ '/' | relative_url }}">
+    {%- if site.avatar %}<img class="avatar avatar-sm" src="{{ site.avatar | relative_url }}" alt="" width="32" height="32">{% endif -%}
+    <span>{{ site.title }}</span>
+  </a>
+  <nav class="site-nav" aria-label="Primary">
+    {%- for item in site.nav -%}
+      {%- assign active = false -%}
+      {%- if page.url == item.url or page.url contains item.url -%}{%- assign active = true -%}{%- endif -%}
+      {%- if item.url == "/blog/" and page.collection == "posts" -%}{%- assign active = true -%}{%- endif -%}
+      <a href="{{ item.url | relative_url }}"{% if active %} aria-current="page"{% endif %}>{{ item.title }}</a>
+    {%- endfor -%}
+    <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.6"/><g stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    </button>
+  </nav>
+</header>

@@ -1,0 +1,4 @@
+# Shown on the home page. Delete entries or this file to hide the section.
+- name: This website
+  url: https://github.com/
+  description: A minimal static site built with Jekyll and deployed on GitHub Pages.

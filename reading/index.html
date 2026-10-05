@@ -1,0 +1,31 @@
+---
+layout: list
+title: Reading
+subtitle: What I'm reading, what I've read, and what's next.
+---
+{%- assign books = site.data.reading -%}
+{%- assign groups = "reading:Currently reading|finished:Finished|queue:Up next" | split: "|" -%}
+{%- for g in groups %}
+  {%- assign parts = g | split: ":" -%}
+  {%- assign items = books | where: "status", parts[0] -%}
+  {%- if parts[0] == "finished" %}{% assign items = items | sort: "finished" | reverse %}{% endif -%}
+  {%- if items.size > 0 %}
+<section class="year-group">
+  <h2 class="year">{{ parts[1] }}</h2>
+  <ul class="book-list">
+    {%- for b in items %}
+    <li class="book">
+      <div class="book-head">
+        <span class="book-title">{% if b.url %}<a href="{{ b.url }}">{{ b.title }}</a>{% else %}{{ b.title }}{% endif %}</span>
+        {%- if b.rating %}<span class="rating" aria-label="{{ b.rating }} out of 5">{% for i in (1..5) %}{% if i <= b.rating %}●{% else %}○{% endif %}{% endfor %}</span>{% endif %}
+      </div>
+      <div class="book-meta muted">
+        {{ b.author }}{% if b.finished %} · {{ b.finished | date: "%b %Y" }}{% endif %}
+      </div>
+      {%- if b.note %}<p class="book-note">{{ b.note }}</p>{% endif %}
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+  {%- endif %}
+{%- endfor %}
