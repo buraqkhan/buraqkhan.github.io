@@ -10,13 +10,13 @@ email: buraqkhan18@gmail.com
 # Profile photo shown in the header and on the home page.
 # Drop your photo in assets/img/ and point this at it (square, ≥ 256px works best).
 avatar: /assets/img/avatar.svg
-github_username: ""        # e.g. buraqkhan — shown in footer if set
+github_username: "buraqkhan"        # e.g. buraqkhan — shown in footer if set
 linkedin_username: ""      # optional
 twitter_username: ""       # optional
 
 # url is your GitHub Pages origin. baseurl is set automatically by the
 # deploy workflow, so leave it empty here.
-url: ""                    # e.g. https://buraqkhan.github.io
+url: "https://buraqkhan.github.io"                    # e.g. https://buraqkhan.github.io
 baseurl: ""
 
 # Top-level navigation (order matters)
